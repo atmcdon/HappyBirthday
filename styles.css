@@ -1,0 +1,96 @@
+:root {
+  --scaleX: 1; /* Default, not flipped */
+}
+
+
+.hidden {
+  display: none;
+}
+
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: linear-gradient(to bottom, rgba(218, 234, 241, 0.993), rgba(174, 238, 144, 0.582));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes sprout {
+  0% {
+      transform: translate(-50%, -100%) scale(0) scaleX(var(--scaleX)); /* Start scaled down */
+  }
+  100% {
+      transform: translate(-50%, -100%) scale(1) scaleX(var(--scaleX)); /* Scale to full size */
+  }
+}
+
+
+@keyframes wave {
+  0%, 100% {
+      transform: translate(-50%, -100%) rotate(0deg) scaleX(var(--scaleX));
+  }
+  25% {
+      transform: translate(-50%, -100%) rotate(2deg) scaleX(var(--scaleX));
+  }
+  50% {
+      transform: translate(-50%, -100%) rotate(-2deg) scaleX(var(--scaleX));
+  }
+  75% {
+      transform: translate(-50%, -100%) rotate(2deg) scaleX(var(--scaleX));
+  }
+}
+
+.flower {
+  position: absolute;
+  width: 30px; /* Default width, will be overridden by JS */
+  height: auto; /* Maintain aspect ratio */
+  transform-origin: bottom; /* Essential for the sprout and sway animations */
+  will-change: transform; /* Optimizes animations */
+  border: 1px solid red;
+}
+
+
+
+.sprouted {
+  /* Example: Increase the brightness once the flower has sprouted */
+  filter: brightness(1.1);
+}
+
+
+
+
+
+.birthday-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+}
+
+.birthday-message {
+  width: 100%; /* Make it full width */
+  
+  text-align: center; /* Center the text */
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  position: fixed; /* Keep it at the top or bottom */
+  top: 30%; /* Adjust this to position the message vertically */
+  left: 0;
+  transform: translateY(-50%); /* Center it vertically */
+}
+
